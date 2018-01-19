@@ -16,15 +16,14 @@ require_once 'inc/bootstrap.php';
 
 <?php inc('header'); ?>
 
-<?php
-if (auth('status') != 1) {
-    echo 'Войдите под правами админа';
-    exit(403);
-}
-$action = url('insertNews.php');
-?>
 <div class="about">
     <div class="container">
+<?php
+if (auth('status') != 1) {
+    echo '<h2>Войдите под правами админа</h2>';
+} else {
+    $action = url('insertNews.php');
+?>
         <h2>Создать новость</h2>
         <form method="GET" action="<?=$action?>">
             <label for="head">Заголовок <input id="head" type="text" name="head" required></label><br>
@@ -36,8 +35,10 @@ $action = url('insertNews.php');
             <label for="author">Автор <input id="author" type="text" name="author" required></label><br>
             <button type="submit">Создать</button>
         </form>
+<?php } ?>
     </div>
 </div>
+
 <?php inc('footer'); ?>
 
 </body>
