@@ -34,10 +34,10 @@ class Auth
 
     private function __construct()
     {
-        $this->db = Db::getInstance();
+        $this->db = Db::instance();
     }
 
-    public static function getInstance()
+    public static function instance()
     {
         if (null === static::$instance) {
             static::$instance = new static();

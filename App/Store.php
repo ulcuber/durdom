@@ -14,10 +14,10 @@ class Store
 
     private function __construct()
     {
-        $this->db = Db::getInstance();
+        $this->db = Db::instance();
     }
 
-    public static function getInstance()
+    public static function instance()
     {
         if (null === static::$instance) {
             static::$instance = new static();
@@ -107,6 +107,31 @@ class Store
         return $this->db->query($sql) ?: [];
     }
 
+    /**
+     * Вставляет в базу новость
+     * @param  Array $newsItem Новость
+     * @return
+     */
+    public function insertNews($newsItem)
+    {
+        return $this->insert('news', $newsItem);
+    }
+
+    /**
+     * Обновляет новость в базе
+     * @param  Array $newsItem Новость с id
+     * @return
+     */
+    public function updateNews($newsItem)
+    {
+        return $this->update('news', $newsItem);
+    }
+
+    /**
+     * Категории для переданных новостей
+     * @param  \mysqli_result $news Новости
+     * @return \Traversable         Категории
+     */
     private function getCategoriesForNews($news)
     {
         $ids = [];
@@ -123,6 +148,70 @@ class Store
             $categories = [];
         }
         return $categories;
+    }
+
+    /**
+     * Вставляет ассоциативный массив в таблицу
+     * @param  string  $table  Название таблицы
+     * @param  array   $item   Вставляемый массив
+     * @return
+     */
+    public function insert(string $table, array $item)
+    {
+        $keys = [];
+        $values = [];
+        foreach ($item as $key => $value) {
+            $keys[] = $this->wrapColumn($key);
+            $values[] = $this->wrapString($value);
+        }
+        $table = $this->wrapColumn($table);
+
+        $sql = "INSERT INTO " . $table . " (" . implode(", ", $keys) .
+            ") VALUES (". implode(", ", $values) . ")";
+
+        return $this->db->query($sql);
+    }
+
+    /**
+     * Обновляет в таблице запись, соответствующую id в ассоциативном массиве
+     * @param  string  $table  Название таблицы
+     * @param  array   $item   Обновляемый массив
+     * @return
+     */
+    public function update(string $table, array $item)
+    {
+        $pairs = [];
+        foreach ($item as $key => $value) {
+            if ($key != 'id') {
+                $pairs[] = $this->wrapColumn($key) . ' = ' . $this->wrapString($value);
+            }
+        }
+        $table = $this->wrapColumn($table);
+
+        $sql = "UPDATE " . $table . " SET " . implode(", ", $pairs) .
+            " WHERE `id` = " . (int) $item['id'];
+
+        return $this->db->query($sql);
+    }
+
+    /**
+     * Экранирует спецсимволы sql и оборачивает строку в обратные кавычки
+     * @param  string $column Строка
+     * @return [type]        Экранированная строка
+     */
+    private function wrapColumn(string $column)
+    {
+        return '`' . $this->db->real_escape_string($column) . '`';
+    }
+
+    /**
+     * Экранирует спецсимволы sql и оборачивает строку в одинарные кавычки
+     * @param  string $value Строка
+     * @return [type]        Экранированная строка
+     */
+    private function wrapString(string $value)
+    {
+        return "'" . $this->db->real_escape_string($value) . "'";
     }
 
     private function __clone()

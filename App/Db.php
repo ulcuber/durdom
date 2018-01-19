@@ -18,7 +18,7 @@ class Db
         var_dump(__METHOD__, $this->db);
     }
 
-    public static function getInstance()
+    public static function instance()
     {
         if (null === static::$db) {
             static::$db = new mysqli(

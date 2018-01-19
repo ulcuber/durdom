@@ -5,7 +5,7 @@
  * Файл содержит константы, функции
  */
 
-define('BASE_URL', 'http://localhost/sites/durdom.pw3/');
+define('BASE_URL', 'http://localhost/sites/durdom/');
 
 /**
  * Кодирует абсолютную url строку
@@ -46,7 +46,7 @@ function autoload($className)
  */
 function store(string $method = null)
 {
-    $store = \App\Store::getInstance();
+    $store = \App\Store::instance();
     if ($method) {
         $method = 'get' . ucfirst($method);
         $params = func_get_args();
@@ -65,7 +65,7 @@ function store(string $method = null)
  */
 function auth(string $method = null)
 {
-    $auth = \App\Auth::getInstance();
+    $auth = \App\Auth::instance();
     if ($method) {
         $params = func_get_args();
         array_shift($params);
