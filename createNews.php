@@ -4,7 +4,7 @@ require_once 'inc/bootstrap.php';
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Durdom | Создать новость</title>
+        <title>Durdom | Добавить новость</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -16,26 +16,33 @@ require_once 'inc/bootstrap.php';
 
 <?php inc('header'); ?>
 
-<div class="about">
+<div class="contact">
     <div class="container">
+        <div class="contact-head">
+            <h2>Добавить новость</h2>
 <?php
 if (auth('status') != 1) {
     echo '<h2>Войдите под правами админа</h2>';
 } else {
     $action = url('insertNews.php');
 ?>
-        <h2>Создать новость</h2>
-        <form method="GET" action="<?=$action?>">
-            <label for="head">Заголовок <input id="head" type="text" name="head" required></label><br>
-            <label for="imghead">Картинка заголовка <input id="imghead" type="text" name="imghead" required></label><br>
-            <label for="post">Текст <input id="post" type="text" name="post" required></label><br>
-            <label for="post2">Второй текст <input id="post2" type="text" name="post2" required></label><br>
-            <label for="img">Картинка <input id="img" type="text" name="img" required></label><br>
-            <label for="img2">Вторая картинка <input id="img2" type="text" name="img2" required></label><br>
-            <label for="author">Автор <input id="author" type="text" name="author" required></label><br>
-            <button type="submit">Создать</button>
-        </form>
+            <form method="GET" action="<?=$action?>">
+                <div class="col-md-6 contact-left">
+                    <input type="text" name="head" class="text" placeholder="Заголовок" required>
+                    <input type="text" name="imghead" class="text" placeholder="Путь к картинке для превью" required>
+                    <input type="text" name="post" class="text" placeholder="Путь к первой картинке" required>
+                    <input type="text" name="post2" class="text" placeholder="Путь к второй картинке" required>
+                    <input type="text" name="author" class="text" placeholder="Ник Автора" required>
+                </div>
+                <div class="col-md-6 contact-right">
+                    <textarea name="post1" placeholder="Первая половина поста" required></textarea>
+                    <textarea name="post2" placeholder="Вторая половина поста" required></textarea>
+                    <input type="submit" value="Добавить"/>
+                </div>
+                <div class="clearfix"></div>
+            </form>
 <?php } ?>
+        </div>
     </div>
 </div>
 
