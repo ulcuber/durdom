@@ -6,6 +6,7 @@
  */
 
 define('BASE_URL', 'http://localhost/sites/durdom/');
+define('ADMIN', 1);
 
 /**
  * Кодирует абсолютную url строку

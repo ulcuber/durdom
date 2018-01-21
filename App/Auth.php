@@ -62,6 +62,16 @@ class Auth
         return $user ? $user['status'] : null;
     }
 
+    public function admin()
+    {
+        return (int) $this->status() === ADMIN;
+    }
+
+    public function guest()
+    {
+        return (int) $this->status() !== ADMIN;
+    }
+
     public function error()
     {
         return $this->error;

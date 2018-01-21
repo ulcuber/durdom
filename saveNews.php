@@ -7,7 +7,7 @@ require_once 'inc/bootstrap.php';
 $back = $_REQUEST['back'] ?? $_SERVER['HTTP_REFERER'] ?? BASE_URL;
 // header('Location: ' . $back);
 
-if (auth('status') != 1) {
+if (auth('guest')) {
     echo 'Войдите под правами админа';
     exit(403);
 }

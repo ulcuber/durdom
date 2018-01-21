@@ -23,7 +23,7 @@ require_once 'inc/bootstrap.php';
         <div class="contact-head">
             <h2>Добавить обзор</h2>
 <?php
-if (auth('status') != 1) {
+if (auth('guest')) {
     echo '<h2>Войдите под правами админа</h2>';
 } else {
     $action = url('insertReview.php');
