@@ -30,12 +30,12 @@ if (auth('status') != 1) {
                 <div class="col-md-6 contact-left">
                     <input type="text" name="head" class="text" placeholder="Заголовок" required>
                     <input type="text" name="imghead" class="text" placeholder="Путь к картинке для превью" required>
-                    <input type="text" name="post" class="text" placeholder="Путь к первой картинке" required>
-                    <input type="text" name="post2" class="text" placeholder="Путь к второй картинке" required>
+                    <input type="text" name="img" class="text" placeholder="Путь к первой картинке" required>
+                    <input type="text" name="img2" class="text" placeholder="Путь к второй картинке" required>
                     <input type="text" name="author" class="text" placeholder="Ник Автора" required>
                 </div>
                 <div class="col-md-6 contact-right">
-                    <textarea name="post1" placeholder="Первая половина поста" required></textarea>
+                    <textarea name="post" placeholder="Первая половина поста" required></textarea>
                     <textarea name="post2" placeholder="Вторая половина поста" required></textarea>
                     <input type="submit" value="Добавить"/>
                 </div>
