@@ -260,7 +260,7 @@ class Store
      * @param  string $table
      * @return
      */
-    public function getLast(string $table, $id)
+    public function getLast(string $table)
     {
         $table = $this->wrapColumn($table);
         $sql = "SELECT * FROM " . $table . " LIMIT 1";
