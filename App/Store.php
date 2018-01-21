@@ -118,6 +118,16 @@ class Store
     }
 
     /**
+     * Вставляет в базу обзор
+     * @param  Array $newsItem Новость
+     * @return
+     */
+    public function insertReview($review)
+    {
+        return $this->insert('reviews', $review);
+    }
+
+    /**
      * Обновляет новость в базе
      * @param  Array $newsItem Новость с id
      * @return
