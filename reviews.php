@@ -33,12 +33,15 @@ require_once 'inc/bootstrap.php';
         <h2 >Обзоры</h2>
         <div class="review-md1">
 
-            <?php foreach (store('reviews') as $row) { ?>
+            <?php
+            foreach (store('reviews') as $row) {
+                $url = url('review.php', ['id' => $row['id']]);
+            ?>
                 <div class="col-md-4 sed-md">
                     <div class=" col-1">
-                        <a href="single.html"><img class="img-responsive" src="images/re1.jpg" alt=""></a>
-                         <h4><a href="single.html"><?=$row['Head']?></a></h4>
-                        <p>текст</p>
+                        <a href="<?=$url?>"><img class="img-responsive" src="<?=$row['imghead']?>" alt=""></a>
+                         <h4><a href="<?=$url?>"><?=$row['head']?></a></h4>
+                        <p><?=mb_substr($row['head'], 0, 40)?></p>
                     </div>
                 </div>
             <?php } ?>

@@ -64,13 +64,22 @@ class Store
 
     /**
      * Возвращает одну новость
+     * @param $id
      * @return Array
      */
     public function getNewsSingle($id)
     {
-        $sql = "SELECT * FROM news WHERE id = " . (int) $id . " LIMIT 1";
-        $result = $this->db->query($sql);
-        return $result ? $result->fetch_assoc() : false;
+        return $this->getById('news', $id);
+    }
+
+    /**
+     * Возвращает один обзор
+     * @param $id
+     * @return Array
+     */
+    public function getReview($id)
+    {
+        return $this->getById('reviews', $id);
     }
 
     /**
@@ -202,6 +211,20 @@ class Store
             " WHERE `id` = " . (int) $item['id'];
 
         return $this->db->query($sql);
+    }
+
+    /**
+     * Возвращает одну строку таблицы по id
+     * @param  string $table
+     * @param $id
+     * @return
+     */
+    public function getById(string $table, $id)
+    {
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT * FROM " . $table . " WHERE id = " . (int) $id . " LIMIT 1";
+        $result = $this->db->query($sql);
+        return $result ? $result->fetch_assoc() : false;
     }
 
     /**
