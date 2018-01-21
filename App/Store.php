@@ -63,7 +63,7 @@ class Store
     }
 
     /**
-     * Возвращает одну новость
+     * Возвращает одну новость по id
      * @param $id
      * @return Array
      */
@@ -73,13 +73,31 @@ class Store
     }
 
     /**
-     * Возвращает один обзор
+     * Возвращает одну новость
+     * @return Array
+     */
+    public function getLastNewsSingle()
+    {
+        return $this->getLast('news');
+    }
+
+    /**
+     * Возвращает один обзор по id
      * @param $id
      * @return Array
      */
     public function getReview($id)
     {
         return $this->getById('reviews', $id);
+    }
+
+    /**
+     * Возвращает один обзор
+     * @return Array
+     */
+    public function getLastReview()
+    {
+        return $this->getLast('reviews');
     }
 
     /**
@@ -233,6 +251,19 @@ class Store
     {
         $table = $this->wrapColumn($table);
         $sql = "SELECT * FROM " . $table . " WHERE id = " . (int) $id . " LIMIT 1";
+        $result = $this->db->query($sql);
+        return $result ? $result->fetch_assoc() : false;
+    }
+
+    /**
+     * Возвращает одну строку таблицы
+     * @param  string $table
+     * @return
+     */
+    public function getLast(string $table, $id)
+    {
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT * FROM " . $table . " LIMIT 1";
         $result = $this->db->query($sql);
         return $result ? $result->fetch_assoc() : false;
     }
