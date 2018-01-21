@@ -44,6 +44,27 @@ class Store
     {
         $news = $this->getNews();
 
+        return $this->makeNewsWithCategories($news);
+    }
+
+    /**
+     * Возвращает найденные новости с категориями
+     * @return \Traversable
+     */
+    public function searchNewsWithCategories($search)
+    {
+        $news = $this->search('news', ['head' => $search]);
+
+        return $this->makeNewsWithCategories($news);
+    }
+
+    /**
+     * Добавляет категории к новостям
+     * @param $news Новости
+     * @return Array Новости с категориями
+     */
+    public function makeNewsWithCategories($news)
+    {
         $categories = $this->getCategoriesForNews($news);
 
         $indexedCategories = [];
@@ -266,6 +287,62 @@ class Store
         $sql = "SELECT * FROM " . $table . " LIMIT 1";
         $result = $this->db->query($sql);
         return $result ? $result->fetch_assoc() : false;
+    }
+
+    /**
+     * Поиск по таблице
+     * @param  string $table Имя таблицы
+     * @param  array $pairs Пары поиска поле => строка
+     * @return
+     */
+    public function search(string $table, array $pairs)
+    {
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT * FROM " . $table;
+        reset($pairs);
+        list($column, $value) = each($pairs);
+        $column = $this->wrapColumn($column);
+        $tokens = $this->prepareSearch($value);
+        reset($tokens);
+        list($key, $token) = each($tokens);
+        $sql .= " WHERE " . $column . " RLIKE " . $token;
+        while (list($key, $token) = each($tokens)) {
+            $sql .= " AND " . $column . " RLIKE " . $token;
+        }
+
+        while (list($column, $value) = each($pairs)) {
+            $column = $this->wrapColumn($column);
+            $tokens = $this->prepareSearch($value);
+            foreach ($tokens as $token) {
+                $sql .= " AND " . $column . " RLIKE " . $token;
+            }
+        }
+
+        return $this->db->query($sql) ?: [];
+    }
+
+    /**
+     * Разбивает строку поиска на токены
+     * @param  string $value Строка поиска
+     * @return Array
+     */
+    private function prepareSearch(string $value)
+    {
+        if (preg_match("#^[ ]+$#", $value)) {
+            return [];
+        }
+        $search = [',', '.', '\t'];
+        $replace = ' ';
+        $value = str_replace($search, $replace, $value);
+        $value = trim($value);
+
+        $values = explode(' ', $value);
+        $tokens = [];
+        foreach ($values as $token) {
+            $tokens[] = trim($this->wrapString($token));
+        }
+
+        return $tokens;
     }
 
     /**

@@ -10,9 +10,12 @@
                     <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                 </div>
                 <div class="search">
-                    <form>
+                    <?php
+                    $action = url('news.php');
+                    ?>
+                    <form method="GET" action="<?=$action?>">
                         <input type="submit" value="">
-                        <input type="text" value="" placeholder="Поиск...">
+                        <input type="text" name="search" value="" placeholder="Поиск...">
                     </form>
                 </div>
                 <div class="clearfix"></div>

@@ -1,5 +1,11 @@
 <?php
 require_once 'inc/bootstrap.php';
+
+if (isset($_REQUEST['search'])) {
+    $news = store()->searchNewsWithCategories($_REQUEST['search']);
+} else {
+    $news = store('newsWithCategories');
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -26,7 +32,7 @@ require_once 'inc/bootstrap.php';
         <h2 class="top">Новости</h2>
 
         <?php
-        foreach (store('newsWithCategories') as $row) {
+        foreach ($news as $row) {
             $url = url('single.php', ['id' => $row['id']]);
         ?>
             <a href="<?=$url?>">News item <?=$row['head']?></a>
