@@ -147,6 +147,16 @@ class Store
     }
 
     /**
+     * Обновляет обзор в базе
+     * @param  Array $review Обзор с id
+     * @return
+     */
+    public function updateReview($review)
+    {
+        return $this->update('reviews', $review);
+    }
+
+    /**
      * Категории для переданных новостей
      * @param  \mysqli_result $news Новости
      * @return \Traversable         Категории
