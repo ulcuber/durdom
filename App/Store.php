@@ -103,6 +103,16 @@ class Store
     }
 
     /**
+     * Возвращает последние N новостей
+     * @param $count Количество
+     * @return Array
+     */
+    public function getLastNews($count)
+    {
+        return $this->getLastN('news', $count);
+    }
+
+    /**
      * Возвращает один обзор по id
      * @param $id
      * @return Array
@@ -119,6 +129,16 @@ class Store
     public function getLastReview()
     {
         return $this->getLast('reviews');
+    }
+
+    /**
+     * Возвращает последние N обзоров
+     * @param $count Количество
+     * @return Array
+     */
+    public function getLastReviews($count)
+    {
+        return $this->getLastN('reviews', $count);
     }
 
     /**
@@ -287,6 +307,19 @@ class Store
         $sql = "SELECT * FROM " . $table . " LIMIT 1";
         $result = $this->db->query($sql);
         return $result ? $result->fetch_assoc() : false;
+    }
+
+    /**
+     * Возвращает последние строки таблицы
+     * @param  string $table
+     * @param $count
+     * @return \Traversable
+     */
+    public function getLastN(string $table, $count)
+    {
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT * FROM " . $table . " LIMIT " . (int) $count;
+        return $this->db->query($sql) ?: [];
     }
 
     /**
