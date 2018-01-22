@@ -1120,7 +1120,7 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 .img-rounded {
@@ -6566,3 +6566,45 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.blog-info-text p.snglp img {
+   	width: 70%;	
+}
+
+@media (min-width: 992px){
+#right-blockk {
+	padding: 3em 0;
+    width: 33.3%;
+    margin-bottom: 2em;
+    right: 0px;
+}
+}
+
+@media (min-width: 992px){
+.kill-me {
+    margin: 20px 0;
+	background: #eee;
+    padding: 1em;
+    margin: 8px;
+}
+}
+
+@media (max-width: 500px){
+.col-md-8 {
+	width: 100%;
+}
+}
+
+@media (max-width: 500px){
+#right-blockk {
+	padding: 3em 0;
+    margin-bottom: 2em;
+}
+
+.kill-me {
+    margin: 20px 0;
+	background: #eee;
+    padding: 1em;
+    margin: 8px;
+}
+}

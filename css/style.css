@@ -694,6 +694,7 @@ font-size: 0.9em;
 .col-1 {
 	background: #eee;
 	  padding: 1em;
+	margin: 8px;
 }
 .col-1 h4{
 	font-size:1.2em;
@@ -2368,6 +2369,7 @@ a i.fa fa-youtube {
 .banner1{
   background: url(../images/bnr1.jpg) no-repeat -63px 0px;
   background-size: cover;
+}
 .banner3 {
   background: url(../images/bnr3.jpg) no-repeat -63px 0px;
   background-size: cover;
