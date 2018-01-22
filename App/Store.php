@@ -332,19 +332,21 @@ class Store
     {
         $table = $this->wrapColumn($table);
         $sql = "SELECT * FROM " . $table;
-        reset($pairs);
-        list($column, $value) = each($pairs);
+
+        $column = array_keys($pairs)[0];
+        $value = array_shift($pairs);
         $column = $this->wrapColumn($column);
         $tokens = $this->prepareSearch($value);
-        reset($tokens);
-        list($key, $token) = each($tokens);
+
+        $token = array_shift($tokens);
         $sql .= " WHERE " . $column . " RLIKE " . $token;
-        while (list($key, $token) = each($tokens)) {
+
+        foreach ($tokens as $token) {
             $sql .= " AND " . $column . " RLIKE " . $token;
         }
 
-        while (list($column, $value) = each($pairs)) {
-            $column = $this->wrapColumn($column);
+        foreach ($pairs as $key => $value) {
+            $column = $this->wrapColumn($key);
             $tokens = $this->prepareSearch($value);
             foreach ($tokens as $token) {
                 $sql .= " AND " . $column . " RLIKE " . $token;
