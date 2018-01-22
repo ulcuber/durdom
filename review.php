@@ -8,12 +8,23 @@ if ($review && isset($review['categories'])) {
     $categories = 'Нет категории';
 }
 ?>
+
+<?php
+
+if (isset($_REQUEST['search'])) {
+    $news = store()->searchNewsWithCategories($_REQUEST['search']);
+} else {
+    $news = store('newsWithCategories');
+}
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
         <title>Durdom.PW | <?=$review['head']?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="js/jquery.min.js"></script>
 
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -32,17 +43,18 @@ if ($review && isset($review['categories'])) {
 <div class="blog">
         <div class="container">
             <div class="col-md-8 blog-left" >
-                <div class="blog-info">
+                <div class="blog-info">                 
                     <div class="blog-info-text">
+                       
                         <div class="blog-img">
 
                         </div>
                         <h1><p class="snglp"><?=$review['head']?></p></h1>
-                        <h3><p class="snglp"><img src="<?=url($review['imghead'])?>" height="500" width="500"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=url($review['imghead'])?>"/></p></h3>
                         <h3><p class="snglp"><?=$review['post']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($review['img'])?>" height="500" width="500"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=url($review['img'])?>" /></p></h3>
                         <h3><p class="snglp"><?=$review['post2']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($review['img2'])?>" height="500" width="500"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=url($review['img2'])?>" /></p></h3>
                     </div>
                     <div class="comment-icons">
                         <ul>
@@ -55,6 +67,46 @@ if ($review && isset($review['categories'])) {
                     </div>
                 </div>
             </div>
+             <div id="right-blockk">
+                       		<script>
+								
+								
+								if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+									
+								}else{
+									
+								$(document).scroll(function() {
+								checkOffset();
+								});
+								
+								function checkOffset() {
+    							if($('#right-blockk').offset().top + $('#right-blockk').height() 
+                                           >= $('#footer').offset().top - 10)
+        						$('#right-blockk').css('position', 'absolute');
+    							if($(document).scrollTop() + window.innerHeight < $('#footer').offset().top)
+        						$('#right-blockk').css('position', 'fixed');
+								}
+									
+								};
+								
+								
+
+								
+							</script>
+                       	
+                       			
+                        	<h2>Последнии обзоры</h2>
+                        	<br>
+                        	   <?php
+            						foreach (store('reviews') as $row) {
+                  					$url = url('review.php', ['id' => $row['id']]);
+ 								?>
+             					<div class="kill-me">
+              					<h4><a href="<?=$url?>"><?=$row['head']?></a></h4>
+                        		<p><?=mb_substr($row['head'], 0, 40)?></p>
+                        		</div>
+    							<?php } ?>
+                        </div>
             <div class="clearfix"> </div>
         </div>
 </div>
