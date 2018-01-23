@@ -13,6 +13,9 @@ session_start();
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+ini_set('html_errors', 1);
+ini_set('docref_root', 'http://php.net/manual/ru/');
+ini_set('docref_ext', '.php');
 
 require_once 'inc/declarations.php';
 spl_autoload_register('autoload');
