@@ -1,5 +1,7 @@
 <?php
 require_once 'inc/bootstrap.php';
+$review = store('lastReview');
+$news = store('lastNews', 2);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -91,24 +93,32 @@ require_once 'inc/bootstrap.php';
     </div>
 </div>
 <!-- poster -->
+<?php
+foreach ($news as $row) {
+      $url = url('single.php', ['id' => $row['id']]);
+?>
 <div class="poster">
      <div class="container">
          <div class="poster-info">
-             <h3>Заголовок.</h3>
-             <p>Текст</p>
-              <a class="hvr-bounce-to-bottom" href="reviews.html">Подробнее</a>
+             <h3><?=$row['head']?></h3>
+             <p><?=mb_substr($row['post2'], 0, 40)?></p>
+              <a class="hvr-bounce-to-bottom" href="<?=$url?>">Подробнее</a>
          </div>
      </div>
 </div>
+<?php } ?>
 <!-- post 2 -->
+<?php
+foreach (store('reviews') as $row) {
+    $url = url('review.php', ['id' => $row['id']]);
+?>
 <div class="x-box">
      <div class="container">
          <div class="x-box_sec">
              <div class="col-md-7 x-box-left">
-                 <h2>Заголовок</h2>
-                 <h3>Подзаголовок.</h3>
-                 <p>Текст</p>
-                 <a class="hvr-bounce-to-top" href="reviews.html">Подробнее</a>
+                 <h2><?=$row['head']?></h2>
+                <p><?=mb_substr($row['post2'], 0, 40)?></p>
+                 <a class="hvr-bounce-to-top" href="<?=$url?>"></a>
              </div>
              <div class="col-md-5 x-box-right">
                  <img src="images/xbox.jpg" class="img-responsive" alt=""/>
@@ -117,7 +127,7 @@ require_once 'inc/bootstrap.php';
          </div>
      </div>
 </div>
-
+<?php } ?>
 <?php inc('footer'); ?>
 
 <script src="js/responsiveslides.min.js"></script>
