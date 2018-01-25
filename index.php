@@ -1,7 +1,7 @@
 <?php
 require_once 'inc/bootstrap.php';
 $review = store('lastReview');
-$news = store('lastNews', 2);
+$news = store('lastNews', 1);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -109,7 +109,7 @@ foreach ($news as $row) {
 <?php } ?>
 <!-- post 2 -->
 <?php
-foreach (store('reviews') as $row) {
+
     $url = url('review.php', ['id' => $row['id']]);
 ?>
 <div class="x-box">
@@ -118,7 +118,7 @@ foreach (store('reviews') as $row) {
              <div class="col-md-7 x-box-left">
                  <h2><?=$row['head']?></h2>
                 <p><?=mb_substr($row['post2'], 0, 40)?></p>
-                 <a class="hvr-bounce-to-top" href="<?=$url?>"></a>
+                 <a class="hvr-bounce-to-top" href="<?=$url?>">Подробнее</a>
              </div>
              <div class="col-md-5 x-box-right">
                  <img src="images/xbox.jpg" class="img-responsive" alt=""/>
@@ -127,7 +127,7 @@ foreach (store('reviews') as $row) {
          </div>
      </div>
 </div>
-<?php } ?>
+
 <?php inc('footer'); ?>
 
 <script src="js/responsiveslides.min.js"></script>
