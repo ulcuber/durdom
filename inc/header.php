@@ -64,7 +64,7 @@
     <div class="banner-info">
         <div class="container">
             <div class="logo">
-                <h1><a href="<?=url()?>">DURDOM.PW</a></h1>
+                <h1><a href="<?=url()?>">GamersNews</a></h1>
             </div>
             <div class="top-menu">
                 <span class="menu"></span>
@@ -74,6 +74,15 @@
                     <li><a href="<?=url('reviews.php')?>">Обзоры</a></li>
                     <li><a href="<?=url('news.php')?>">Новости</a></li>
                     <li><a href="<?=url('gallery.php')?>">Галерея</a></li>
+                    <?php
+					$admin = auth()->admin();
+					if ($admin) {
+						echo '<li><a href="'. url('createNews.php').'">Добавить новость</a></li>';
+						echo '<li><a href="'. url('createReview.php'). '">Добавить обзор</a></li>';
+					} else {
+						
+					}
+					?>
                 </ul>
             </div>
             <div class="clearfix"></div>

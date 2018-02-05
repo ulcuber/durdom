@@ -5,7 +5,7 @@
  * Файл содержит константы, функции
  */
 
-define('BASE_URL', 'http://localhost/sites/durdom/');
+define('BASE_URL', 'http://localhost/suit/');
 define('ADMIN', 1);
 
 /**

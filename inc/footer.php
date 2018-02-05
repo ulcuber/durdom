@@ -5,10 +5,10 @@
              <div class="col-md-3 ftr-info">
                  <h3>О нас</h3>
                  <p>Блабалалбла.</p>
-                 <iframe src="https://discordapp.com/widget?id=310517211229978630&theme=dark" width="250" height="350" allowtransparency="true" frameborder="0"></iframe>
+                
              </div>
              <div class="col-md-3 ftr-grid">
-                 <h3>Категории</h3>
+                 <!--<h3>Категории</h3>
                  <ul class="ftr-list">
                      <li><a href="#">Action</a></li>
                      <li><a href="#">Racing</a></li>
@@ -33,7 +33,7 @@
                      <li><a href="#">Карта сайта</a></li>
                      <li><a href="#"></a></li>
                  </ul>
-             </div>
+             </div>-->
              <div class="clearfix"></div>
 
          </div>
@@ -42,7 +42,7 @@
 
 <div class="copywrite">
      <div class="container">
-         <p> © 2017 Durdom . Все права защищены | Design by NecroS</p>
+         <p> © 2017 GamersNews . Все права защищены | Design by NecroS</p>
      </div>
 </div>
 
