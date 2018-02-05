@@ -6576,7 +6576,8 @@ button.close {
 	padding: 3em 0;
     width: 33.3%;
     margin-bottom: 2em;
-    right: 0px;
+	float: right;
+	right: 0;
 }
 }
 
