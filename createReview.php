@@ -18,6 +18,12 @@ require_once 'inc/bootstrap.php';
 
 <?php inc('header'); ?>
 
+<!-- banner -->
+<div class="banner">
+        <div class="bnr2">
+       </div>
+</div>
+
 <div class="contact">
     <div class="container">
         <div class="contact-head">
@@ -35,6 +41,8 @@ if (auth('guest')) {
                     <input type="text" name="img" class="text" placeholder="Путь к первой картинке" required>
                     <input type="text" name="img2" class="text" placeholder="Путь к второй картинке" required>
                     <input type="text" name="author" class="text" placeholder="Ник Автора" required>
+                     <input type="text" name="video" class="text" placeholder="Ссылка на видео" required>
+                     <input type="text" name="date" class="text" placeholder="Дата в формате ГГГГ-ММ-ДД" required>
                 </div>
                 <div class="col-md-6 contact-right">
                     <textarea name="post" placeholder="Первая половина поста" required></textarea>

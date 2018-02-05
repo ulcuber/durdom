@@ -32,6 +32,8 @@ require_once 'inc/bootstrap.php';
     <div class="container">
         <h2 >Обзоры</h2>
         <div class="review-md1">
+            
+            
 
             <?php
             foreach (store('reviews') as $row) {
@@ -41,7 +43,7 @@ require_once 'inc/bootstrap.php';
                     <div class=" col-1">
                         <a href="<?=$url?>"><img class="img-responsive" src="<?=$row['imghead']?>" alt=""></a>
                          <h4><a href="<?=$url?>"><?=$row['head']?></a></h4>
-                        <p><?=mb_substr($row['head'], 0, 40)?></p>
+                        <p><?=mb_substr($row['post'], 0, 80)?></p>
                     </div>
                 </div>
             <?php } ?>

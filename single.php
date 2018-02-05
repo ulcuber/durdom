@@ -48,11 +48,12 @@ if (isset($_REQUEST['search'])) {
 
                         </div>
                         <h1><p class="snglp"><?=$single['head']?></p></h1>
-                        <h3><p class="snglp"><img src="<?=url($single['imghead'])?>"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=$single['imghead']?>"/></p></h3>
                         <h3><p class="snglp"><?=$single['post']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($single['img'])?>"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=$single['img']?>"/></p></h3>
                         <h3><p class="snglp"><?=$single['post2']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($single['img2'])?>"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=$single['img2']?>"/></p></h3>
+                        <iframe width="866" height="600" src="<?=single['video']?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="comment-icons">
                         <ul>
@@ -79,9 +80,9 @@ if (isset($_REQUEST['search'])) {
 								
 								function checkOffset() {
     							if($('#right-blockk').offset().top + $('#right-blockk').height() 
-                                           >= $('#footer').offset().top - 10)
+                                           >= $('.footer').offset().top - 10)
         						$('#right-blockk').css('position', 'absolute');
-    							if($(document).scrollTop() + window.innerHeight < $('#footer').offset().top)
+    							if($(document).scrollTop() + window.innerHeight < $('.footer').offset().top)
         						$('#right-blockk').css('position', 'fixed');
 								}
 									
@@ -93,7 +94,7 @@ if (isset($_REQUEST['search'])) {
 							</script>
                        	
                        			
-                        	<h2>Последнии новости</h2>
+                        	<h2>Последние новости</h2>
                         	<br>
                         	   <?php
             						foreach ($news as $row) {

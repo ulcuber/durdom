@@ -50,25 +50,26 @@ if (isset($_REQUEST['search'])) {
 
                         </div>
                         <h1><p class="snglp"><?=$review['head']?></p></h1>
-                        <h3><p class="snglp"><img src="<?=url($review['imghead'])?>"/></p></h3>
+                        <h3><p class="snglp"><img src="<?=$review['imghead']?>"/></p></h3>
                         <h3><p class="snglp"><?=$review['post']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($review['img'])?>" /></p></h3>
+                        <h3><p class="snglp"><img src="<?=$review['img']?>" /></p></h3>
                         <h3><p class="snglp"><?=$review['post2']?></p></h3>
-                        <h3><p class="snglp"><img src="<?=url($review['img2'])?>" /></p></h3>
+                        <h3><p class="snglp"><img src="<?=$review['img2']?>" /></p></h3>
+                        <iframe width="866" height="600" src="<?=$review['video']?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="comment-icons">
                         <ul>
-                            <li><span></span><a href="#">123</a> </li>
-                            <li><span class="clndr"></span>ДАТА</li>
+                            <li><span class="clndr"></span><?=$review['date']?></li>
                             <li><span class="admin"></span> <a href="#"><?=$review['author']?></a></li>
                             <li><span class="cmnts"></span> <a href="#"><?=$categories?></a></li>
-                            <li><a href="#" class="like">,,,</a></li>
+                            
                         </ul>
                     </div>
                 </div>
             </div>
              <div id="right-blockk">
-                       		<script>
+                      	
+                      		<script>
 								
 								
 								if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -81,9 +82,9 @@ if (isset($_REQUEST['search'])) {
 								
 								function checkOffset() {
     							if($('#right-blockk').offset().top + $('#right-blockk').height() 
-                                           >= $('#footer').offset().top - 10)
+                                           >= $('.footer').offset().top - 10)
         						$('#right-blockk').css('position', 'absolute');
-    							if($(document).scrollTop() + window.innerHeight < $('#footer').offset().top)
+    							if($(document).scrollTop() + window.innerHeight < $('.footer').offset().top)
         						$('#right-blockk').css('position', 'fixed');
 								}
 									
@@ -95,7 +96,7 @@ if (isset($_REQUEST['search'])) {
 							</script>
                        	
                        			
-                        	<h2>Последнии обзоры</h2>
+                        	<h2>Последние обзоры</h2>
                         	<br>
                         	   <?php
             						foreach (store('reviews') as $row) {
@@ -106,6 +107,8 @@ if (isset($_REQUEST['search'])) {
                         		<p><?=mb_substr($row['head'], 0, 40)?></p>
                         		</div>
     							<?php } ?>
+                       
+                       
                         </div>
             <div class="clearfix"> </div>
         </div>
