@@ -26,7 +26,7 @@ $news = store('lastNews', 1);
                 <div class="caption">
                    <h3>Добро пожаловать в GamersNews.</h3>
                     <p>GamersNews, с нами интересно.</p>
-                    
+
                 </div>
             </div>
             <div class="slid banner2">
@@ -112,20 +112,20 @@ foreach ($news as $row) {
 <!-- post 2 -->
 <?php
 
-    $url = url('review.php', ['id' => $row['id']]);
+    $url = url('review.php', ['id' => $review['id']]);
 ?>
 <div class="x-box">
      <div class="container">
          <div class="x-box_sec">
              <div class="col-md-7 x-box-left">
-                 <h2><?=$row['head']?></h2>
-                <p><?=mb_substr($row['post2'], 0, 80)?></p>
+                 <h2><?=$review['head']?></h2>
+                <p><?=mb_substr($review['post2'], 0, 80)?></p>
                  <a class="hvr-bounce-to-top" href="<?=$url?>">Подробнее</a>
              </div>
              <div class="col-md-5 x-box-right">
                  <img src="images/xbox.jpg" class="img-responsive" alt=""/>
              </div>
-            
+
              <div class="clearfix"></div>
          </div>
      </div>

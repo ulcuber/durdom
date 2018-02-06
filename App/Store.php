@@ -304,7 +304,7 @@ class Store
     public function getLast(string $table)
     {
         $table = $this->wrapColumn($table);
-        $sql = "SELECT * FROM " . $table . " LIMIT 1";
+        $sql = "SELECT * FROM " . $table . " ORDER BY `id` DESC LIMIT 1";
         $result = $this->db->query($sql);
         return $result ? $result->fetch_assoc() : false;
     }
@@ -318,7 +318,7 @@ class Store
     public function getLastN(string $table, $count)
     {
         $table = $this->wrapColumn($table);
-        $sql = "SELECT * FROM " . $table . " LIMIT " . (int) $count;
+        $sql = "SELECT * FROM " . $table . " ORDER BY `id` DESC LIMIT " . (int) $count;
         return $this->db->query($sql) ?: [];
     }
 
