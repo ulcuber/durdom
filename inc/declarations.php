@@ -16,7 +16,7 @@ define('ROOT_DIR', dirname(__DIR__));
  */
 function url($url = null, array $params = [])
 {
-    return getenv('BASE_URL') . $url . (!empty($params) ? '?' . http_build_query($params) : '');
+    return $_ENV['BASE_URL'] . $url . (!empty($params) ? '?' . http_build_query($params) : '');
 }
 
 /**
