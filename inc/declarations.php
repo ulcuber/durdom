@@ -7,6 +7,7 @@
 
 define('ADMIN', 1);
 define('ROOT_DIR', dirname(__DIR__));
+define('ADMIN_DIR', ROOT_DIR . DIRECTORY_SEPARATOR . 'admin');
 
 /**
  * Кодирует абсолютную url строку

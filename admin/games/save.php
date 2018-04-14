@@ -10,7 +10,7 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 
-header('Location: ' . url('admin'));
+header('Location: ' . url('admin/games'));
 
 $filename = (new Image())->path('images/games')->input('img')->save();
 if ($filename) {

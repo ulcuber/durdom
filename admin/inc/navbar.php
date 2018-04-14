@@ -21,7 +21,11 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 &nbsp;
-                <li><a href="<?=url('admin')?>">Игры</a></li>
+                <li><a href="<?=url('admin/games')?>">Игры</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                &nbsp;
+                <li><a href="<?=url('admin/news')?>">Новости</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

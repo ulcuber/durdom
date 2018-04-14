@@ -64,11 +64,21 @@ abstract class File
         return $this->name;
     }
 
-    public function delete()
+    public function delete($name = null)
     {
-        $uploadfile = $this->uploaddir . $this->name;
+        $uploadfile = $this->uploaddir . $name ?: $this->name;
         if (is_file($uploadfile)) {
             unlink($uploadfile);
         }
+    }
+
+    public function resave($name)
+    {
+        $file = $this->save();
+        if ($file) {
+            $this->delete($name);
+            return $file;
+        }
+        return $name;
     }
 }
