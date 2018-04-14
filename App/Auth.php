@@ -96,6 +96,7 @@ class Auth
         if (!is_object($user)) {
             return $this->setError('Пользователь не найден');
         }
+        $this->user = $user->fetch_assoc();
         if (!$this->user) {
             return $this->setError('Пользователь не найден');
         }
