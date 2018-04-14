@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-$back = $_REQUEST['back'] ?: $_SERVER['HTTP_REFERER'];
-header('Location: ' . $back);
-
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 session_unset();
 session_destroy();

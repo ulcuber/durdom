@@ -83,3 +83,14 @@ function inc($inc)
 {
     require_once 'inc/' . $inc. '.php';
 }
+
+/**
+ * Возвращает назад
+ */
+function back()
+{
+    $back = isset($_REQUEST['back']) ?
+        $_REQUEST['back']
+        : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $_ENV['BASE_URL'];
+    header('Location: ' . $back);
+}

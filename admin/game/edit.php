@@ -1,5 +1,5 @@
 <?php
-require_once '../inc/bootstrap.php';
+require_once '../../inc/bootstrap.php';
 if (!auth()->admin()) {
     exit();
 }
@@ -31,7 +31,7 @@ if (!$game) {
 <body>
     <div id="app">
 
-        <?php require_once 'inc/navbar.php'; ?>
+        <?php include '../inc/navbar.php'; ?>
 
         <div class="container-fluid">
             <div class="row">
@@ -41,7 +41,7 @@ if (!$game) {
 
 <form class="form-horizontal"
     method="POST"
-    action="<?=url('admin/updateGame.php')?>"
+    action="<?=url('admin/game/update.php')?>"
     enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?=$game['id']?>">
     <div class="panel-body">

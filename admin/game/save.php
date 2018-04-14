@@ -2,7 +2,7 @@
 
 namespace App;
 
-require_once '../inc/bootstrap.php';
+require_once '../../inc/bootstrap.php';
 if (!auth()->admin()) {
     exit();
 }

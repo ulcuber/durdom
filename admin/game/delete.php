@@ -2,7 +2,7 @@
 
 namespace App;
 
-require_once '../inc/bootstrap.php';
+require_once '../../inc/bootstrap.php';
 if (!auth()->admin()) {
     exit();
 }
@@ -10,9 +10,7 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 
-$back = isset($_REQUEST['back']) ? $_REQUEST['back']
-    : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : BASE_URL;
-header('Location: ' . $back);
+back();
 
 if (!isset($_REQUEST['id'])) {
     $_SESSION['error'] = 'Не задан id';

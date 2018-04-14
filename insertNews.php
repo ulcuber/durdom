@@ -4,8 +4,7 @@ namespace App;
 
 require_once 'inc/bootstrap.php';
 
-$back = $_REQUEST['back'] ?: $_SERVER['HTTP_REFERER'] ?: BASE_URL;
-header('Location: ' . $back);
+back();
 
 if (auth('guest')) {
     echo 'Войдите под правами админа';

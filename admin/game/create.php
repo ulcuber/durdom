@@ -1,5 +1,5 @@
 <?php
-require_once '../inc/bootstrap.php';
+require_once '../../inc/bootstrap.php';
 if (!auth()->admin()) {
     echo 'Войдите в систему';
     exit();
@@ -21,7 +21,7 @@ if (!auth()->admin()) {
 <body>
     <div id="app">
 
-        <?php inc('navbar'); ?>
+        <?php include '../inc/navbar.php'; ?>
 
         <div class="container-fluid">
             <div class="row">
@@ -31,7 +31,7 @@ if (!auth()->admin()) {
 
 <form class="form-horizontal"
     method="POST"
-    action="<?=url('admin/saveGame.php')?>"
+    action="<?=url('admin/game/save.php')?>"
     enctype="multipart/form-data">
     <div class="panel-body">
         <div class="form-group">

@@ -42,7 +42,7 @@ var_dump($hasNextPage);
                         <div class="panel-heading">Игры
                             <a
                                 class="btn btn-xs btn-success pull-right"
-                                href="<?=url('admin/createGame.php')?>">
+                                href="<?=url('admin/game/create.php')?>">
                                 Создать
                             </a>
                         </div>
@@ -64,11 +64,11 @@ var_dump($hasNextPage);
                 <td class="text-right">
                     <a
                         class="btn btn-xs btn-info"
-                        href="<?=url('admin/editGame.php', ['id' => $game['id']])?>">
+                        href="<?=url('admin/game/edit.php', ['id' => $game['id']])?>">
                         Редактировать
                     </a>
 
-                    <form action="<?=url('admin/deleteGame.php', ['id' => $game['id']])?>"
+                    <form action="<?=url('admin/game/delete.php', ['id' => $game['id']])?>"
                         method="POST"
                         style="display: inline;"
                         onsubmit="if(confirm('Удалить? Вы уверены?')) {return true;} else {return false;};">
