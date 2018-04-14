@@ -18,7 +18,7 @@
         <div class="logo">
 
         </div>
-        <form id="userlogin" action="login.php" method="POST">
+        <form id="userlogin" action="<?=url('login.php');?>" method="POST">
         <div class="login">
             <div class="error">
                 <?php
