@@ -8,7 +8,7 @@ abstract class File
     protected $inputName;
     protected $uploaddir;
     protected $validTypes = [];
-    protected $maxSize = 1024 * 1024;
+    protected $maxSize = 1048576;
 
     public function name($name)
     {
