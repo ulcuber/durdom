@@ -10,16 +10,15 @@ class Db
 
     private function __construct()
     {
-        var_dump(__METHOD__, $this->db);
+        // var_dump(__METHOD__, $this->db);
     }
 
     public static function instance()
     {
-        var_dump();
         if (null === static::$db) {
             static::$db = new mysqli(
                 $_ENV['DB_HOST'],
-                $_ENV['DB_USER'],
+                $_ENV['DB_USERNAME'],
                 $_ENV['DB_PASSWORD'],
                 $_ENV['DB_DATABASE']
             );
