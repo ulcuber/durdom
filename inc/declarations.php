@@ -45,7 +45,7 @@ function autoload($className)
  * @param mixed Остальные параметры передаются в указанный метод
  * @return \App\Store|\Traversable
  */
-function store($method = NULL)
+function store($method = null)
 {
     $store = \App\Store::instance();
     if ($method) {

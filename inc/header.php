@@ -49,7 +49,7 @@
                                 $url = url('logout.php');
                                 echo '<a href="' . $url . '">Выйти</a>';
                             } else {
-                                $url = url('login2.php');
+                                $url = url('login.php');
                                 echo '<a href="' . $url . '">Войти</a>';
                             }
                             ?>
@@ -75,14 +75,12 @@
                     <li><a href="<?=url('news.php')?>">Новости</a></li>
                     <li><a href="<?=url('gallery.php')?>">Галерея</a></li>
                     <?php
-					$admin = auth()->admin();
-					if ($admin) {
-						echo '<li><a href="'. url('createNews.php').'">Добавить новость</a></li>';
-						echo '<li><a href="'. url('createReview.php'). '">Добавить обзор</a></li>';
-					} else {
-						
-					}
-					?>
+                    $admin = auth()->admin();
+                    if ($admin) {
+                        echo '<li><a href="'. url('createNews.php').'">Добавить новость</a></li>';
+                        echo '<li><a href="'. url('createReview.php'). '">Добавить обзор</a></li>';
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="clearfix"></div>

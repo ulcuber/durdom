@@ -9,9 +9,6 @@ use mysqli;
  */
 class Auth
 {
-    const LOGIN = 'login';
-    const PASSWORD = 'password';
-
     private static $instance;
 
     /**
@@ -64,12 +61,12 @@ class Auth
 
     public function admin()
     {
-        return (int) $this->status() === ADMIN;
+        return $this->status() === ADMIN;
     }
 
     public function guest()
     {
-        return (int) $this->status() !== ADMIN;
+        return $this->status() !== ADMIN;
     }
 
     public function error()
@@ -100,7 +97,7 @@ class Auth
             return $this->setError('Пользователь не найден');
         }
         $this->user = $user->fetch_assoc();
-        
+
         $tvoibatja = md5(md5($this->password));
         $password = $this->db->real_escape_string(trim($this->password));
         $sql = "SELECT * FROM users WHERE '". $tvoibatja . "' = '" . $password . "' LIMIT 1";
