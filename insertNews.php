@@ -4,7 +4,7 @@ namespace App;
 
 require_once 'inc/bootstrap.php';
 
-$back = $_REQUEST['back'] ?? $_SERVER['HTTP_REFERER'] ?? BASE_URL;
+$back = $_REQUEST['back'] ?: $_SERVER['HTTP_REFERER'] ?: BASE_URL;
 header('Location: ' . $back);
 
 if (auth('guest')) {

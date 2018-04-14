@@ -10,7 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 unset($_SESSION['error']);
 
 if (auth()->login()) {
-    header('Location: index.php ');
+    $back = BASE_URL;
+    header('Location: ' . $back);
 } else {
     $_SESSION['error'] = auth()->error();
+    $back = $_REQUEST['back'] ?: $_SERVER['HTTP_REFERER'] ?: BASE_URL;
+    header('Location: ' . $back);
 }
