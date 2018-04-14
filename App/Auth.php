@@ -94,6 +94,7 @@ class Auth
         $sql = "SELECT * FROM users WHERE 'login' = '" . $login . "' LIMIT 1";
         $user = $this->db->query($sql);
         $this->user = $user->fetch_assoc();
+        var_dump($this->user);
         if (!$this->user) {
             return $this->setError('Пользователь не найден');
         }
