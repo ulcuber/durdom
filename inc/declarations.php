@@ -5,8 +5,6 @@
  * Файл содержит константы, функции
  */
 
-// define('BASE_URL', 'http://gamers-news.h1n.ru/');
-define('BASE_URL', 'http://localhost/sites/durdom/');
 define('ADMIN', 1);
 define('ROOT_DIR', dirname(__DIR__));
 
@@ -18,7 +16,7 @@ define('ROOT_DIR', dirname(__DIR__));
  */
 function url($url = null, array $params = [])
 {
-    return BASE_URL . $url . (!empty($params) ? '?' . http_build_query($params) : '');
+    return getenv('BASE_URL') . $url . (!empty($params) ? '?' . http_build_query($params) : '');
 }
 
 /**

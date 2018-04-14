@@ -20,3 +20,6 @@ ini_set('docref_ext', '.php');
 
 require_once __DIR__ . '/declarations.php';
 spl_autoload_register('autoload');
+
+$dotenv = new \Dotenv\Dotenv(__DIR__);
+$dotenv->load();

@@ -6,13 +6,6 @@ use mysqli;
 
 class Db
 {
-    const HOST = 'localhost';
-    // const USER = 'necros';
-    const USER = 'root';
-    // const PASSWORD = '12345qwe';
-    const PASSWORD = 'secret';
-    const DATABASE = 'durdom';
-
     protected static $db;
 
     private function __construct()
@@ -24,10 +17,10 @@ class Db
     {
         if (null === static::$db) {
             static::$db = new mysqli(
-                static::HOST,
-                static::USER,
-                static::PASSWORD,
-                static::DATABASE
+                getenv('DB_HOST'),
+                getenv('DB_USER'),
+                getenv('DB_PASSWORD'),
+                getenv('DB_DATABASE')
             );
 
             if (mysqli_connect_error()) {
