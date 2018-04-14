@@ -19,5 +19,5 @@ if (auth()->login()) {
     $back = isset($_REQUEST['back']) ?
         $_REQUEST['back']
         : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : BASE_URL;
-    // header('Location: ' . $back);
+    header('Location: ' . $back);
 }
