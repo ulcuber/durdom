@@ -18,5 +18,5 @@ ini_set('html_errors', 1);
 ini_set('docref_root', 'http://php.net/manual/ru/');
 ini_set('docref_ext', '.php');
 
-require_once 'inc/declarations.php';
+require_once __DIR__ . '/declarations.php';
 spl_autoload_register('autoload');

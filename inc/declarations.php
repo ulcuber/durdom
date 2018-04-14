@@ -5,8 +5,10 @@
  * Файл содержит константы, функции
  */
 
-define('BASE_URL', 'http://gamers-news.h1n.ru/');
+// define('BASE_URL', 'http://gamers-news.h1n.ru/');
+define('BASE_URL', 'http://localhost/sites/durdom/');
 define('ADMIN', 1);
+define('ROOT_DIR', dirname(__DIR__));
 
 /**
  * Кодирует абсолютную url строку
@@ -35,7 +37,7 @@ function autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    require $fileName;
+    require ROOT_DIR . DIRECTORY_SEPARATOR . $fileName;
 }
 
 /**

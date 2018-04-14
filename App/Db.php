@@ -7,8 +7,10 @@ use mysqli;
 class Db
 {
     const HOST = 'localhost';
-    const USER = 'necros';
-    const PASSWORD = '12345qwe';
+    // const USER = 'necros';
+    const USER = 'root';
+    // const PASSWORD = '12345qwe';
+    const PASSWORD = 'secret';
     const DATABASE = 'durdom';
 
     protected static $db;

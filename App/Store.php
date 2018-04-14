@@ -121,10 +121,10 @@ class Store
     {
         return $this->getById('reviews', $id);
     }
-    
-     public function getNews2($id)
+
+    public function getNews2($id)
     {
-         return $this->getById('news', $id);
+        return $this->getById('news', $id);
     }
 
     /**
@@ -255,7 +255,7 @@ class Store
         $values = [];
         foreach ($item as $key => $value) {
             $keys[] = $this->wrapColumn($key);
-            $values[] = $this->wrapString($value);
+            $values[] = $this->wrapValue($value);
         }
         $table = $this->wrapColumn($table);
 
@@ -276,7 +276,7 @@ class Store
         $pairs = [];
         foreach ($item as $key => $value) {
             if ($key != 'id') {
-                $pairs[] = $this->wrapColumn($key) . ' = ' . $this->wrapString($value);
+                $pairs[] = $this->wrapColumn($key) . ' = ' . $this->wrapValue($value);
             }
         }
         $table = $this->wrapColumn($table);
@@ -299,6 +299,19 @@ class Store
         $sql = "SELECT * FROM " . $table . " WHERE id = " . (int) $id . " LIMIT 1";
         $result = $this->db->query($sql);
         return $result ? $result->fetch_assoc() : false;
+    }
+
+    /**
+     * Удаляет одну строку таблицы по id
+     * @param  string $table
+     * @param $id
+     * @return
+     */
+    public function deleteById($table, $id)
+    {
+        $table = $this->wrapColumn($table);
+        $sql = "DELETE FROM " . $table . " WHERE id = " . (int) $id . " LIMIT 1";
+        return $this->db->query($sql);
     }
 
     /**
@@ -325,6 +338,39 @@ class Store
         $table = $this->wrapColumn($table);
         $sql = "SELECT * FROM " . $table . " ORDER BY `id` DESC LIMIT " . (int) $count;
         return $this->db->query($sql) ?: [];
+    }
+
+    /**
+     * Возвращает страницу $page в $perPage элементов
+     * @param  string $table
+     * @param $page
+     * @param $perPage
+     * @return \Traversable
+     */
+    public function getForPage($table, $page, $perPage = 10)
+    {
+        $from = ($page - 1) * $perPage;
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT * FROM " . $table .
+            " ORDER BY `id` DESC LIMIT " . (int) $from . ', ' . (int) $perPage;
+        return $this->db->query($sql) ?: [];
+    }
+
+    /**
+     * Возвращает true при наличии страницы $page
+     * @param  string $table
+     * @param $page
+     * @param $perPage
+     * @return Bool
+     */
+    public function hasPage($table, $page, $perPage = 10)
+    {
+        $from = ($page - 1) * $perPage;
+        $table = $this->wrapColumn($table);
+        $sql = "SELECT id FROM " . $table .
+            " ORDER BY `id` DESC LIMIT " . (int) $from . ', ' . (int) $perPage;
+        $result = $this->db->query($sql);
+        return  is_object($result) ? $result->num_rows > 0 : false;
     }
 
     /**
@@ -379,7 +425,7 @@ class Store
         $values = explode(' ', $value);
         $tokens = [];
         foreach ($values as $token) {
-            $tokens[] = trim($this->wrapString($token));
+            $tokens[] = trim($this->wrapValue($token));
         }
 
         return $tokens;
@@ -400,8 +446,11 @@ class Store
      * @param  string $value Строка
      * @return [type]        Экранированная строка
      */
-    private function wrapString($value)
+    private function wrapValue($value)
     {
+        if (is_int($value)) {
+            return $value;
+        }
         return "'" . $this->db->real_escape_string($value) . "'";
     }
 

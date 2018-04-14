@@ -61,12 +61,12 @@ class Auth
 
     public function admin()
     {
-        return $this->status() === ADMIN;
+        return (int) $this->status() === ADMIN;
     }
 
     public function guest()
     {
-        return $this->status() !== ADMIN;
+        return (int) $this->status() !== ADMIN;
     }
 
     public function error()
