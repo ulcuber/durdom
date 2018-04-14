@@ -93,7 +93,7 @@ class Auth
         $login = $this->db->real_escape_string(trim($this->login));
         $sql = "SELECT * FROM `users` WHERE `login` = '" . $login . "' LIMIT 1";
         $user = $this->db->query($sql);
-        if (!$user) {
+        if (!is_object($user)) {
             return $this->setError('Пользователь не найден');
         }
         if (!$this->user) {
