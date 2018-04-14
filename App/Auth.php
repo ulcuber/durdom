@@ -102,7 +102,7 @@ class Auth
         }
 
         $password = md5(md5($this->password));
-        if (!$this->user['password'] !== $password) {
+        if ($this->user['password'] !== $password) {
             return $this->setError('Неверный пароль');
         }
 
