@@ -4,6 +4,7 @@ require_once 'inc/bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     inc('login');
+    var_dump($_SERVER['REQUEST_METHOD']);
     exit();
 }
 
