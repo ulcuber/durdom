@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit();
 }
 
-$loggedIn = auth()->login($_REQUEST['username'], $_REQUEST['password']);
+$loggedIn = auth()->login();
 
 if ($loggedIn) {
     unset($_SESSION['error']);

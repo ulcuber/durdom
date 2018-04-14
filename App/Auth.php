@@ -74,15 +74,15 @@ class Auth
         return $this->error;
     }
 
-    public function login($tvoiamat, $tvoibatja)
+    public function login()
     {
-        $issetParams = isset($tvoiamat) && isset($tvoibatja);
+        $issetParams = isset($_REQUEST['username']) && isset($_REQUEST['password']);
         if (!$issetParams) {
             return $this->setError('Поля не заданы');
         }
 
-        $this->login = $tvoiamat;
-        $this->password = $tvoibatja;
+        $this->login = $_REQUEST['username'];
+        $this->password = $_REQUEST['password'];
         if ($this->login == '') {
             return $this->setError('Пустой логин');
         }
@@ -91,18 +91,15 @@ class Auth
         }
 
         $login = $this->db->real_escape_string(trim($this->login));
-        $sql = "SELECT * FROM users WHERE '". $tvoiamat . "' = '" . $login . "' LIMIT 1";
+        $sql = "SELECT * FROM users WHERE 'login' = '" . $login . "' LIMIT 1";
         $user = $this->db->query($sql);
         if (!$user) {
             return $this->setError('Пользователь не найден');
         }
         $this->user = $user->fetch_assoc();
 
-        $tvoibatja = md5(md5($this->password));
-        $password = $this->db->real_escape_string(trim($this->password));
-        $sql = "SELECT * FROM users WHERE '". $tvoibatja . "' = '" . $password . "' LIMIT 1";
-        $password_hash = $this->db->query($sql);
-        if (!$password_hash) {
+        $password = md5(md5($this->password));
+        if (!$this->user['password'] !== $password) {
             return $this->setError('Неверный пароль');
         }
 
