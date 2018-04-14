@@ -1,5 +1,5 @@
 <?php
-require_once 'inc/bootstrap.php'; 
+require_once 'inc/bootstrap.php';
 $review = store('lastReview');
 $news = store('lastNews', 1);
 ?>
@@ -48,50 +48,33 @@ $news = store('lastNews', 1);
 <!-- latest -->
 <div class="latest">
     <div class="container">
-         <div class="latest-games">
-             <h3>Последние релизы игр</h3>
-             <span></span>
-         </div>
-         <div class="latest-top">
-                <div class="col-md-5 trailer-text">
-                   <div class="sub-trailer">
-                       <div class="col-md-4 sub-img">
-                            <img src="images/v2.jpg" alt="img07"/>
-                       </div>
-                       <div class="col-md-8 sub-text">
-                                <a href="#">Stalker 2 (PC)</a>
-                             <p>Глава компании Сергей Григорович сообщил, что игра базируется на новом мультиплатформенном движке, созданном с нуля. В разработке также применялась обновленная версия движка X-Ray.</p>
-                       </div>
-                        <div class="clearfix"> </div>
-                   </div>
+        <div class="latest-games">
+            <h3>Последние релизы игр</h3>
+            <span></span>
+        </div>
+        <div class="latest-top">
+            <div class="col-md-5 trailer-text">
+                <?php foreach (store('lastN', 'games', 3) as $game) { ?>
                     <div class="sub-trailer">
-                       <div class="col-md-4 sub-img">
-                            <img src="images/v1.jpg" alt="img07"/>
-                       </div>
-                       <div class="col-md-8 sub-text">
-                                <a href="#"> Metro: Exodus
-(PC,Xbox One,PS 4)</a>
-                             <p>Metro Exodus – новый шутер от 1-го лица, разрабатываемый украинской студией 4A Games и издаваемый германской компанией Deep Silver. Создание игры началось в 2014 году в студиях 4A Games в Мальте и в Киеве. Это третья часть серии Metro, основанной на романах Дмитрия Глуховского. Действие продолжается после Metro: Last Light и Metro 2033.</p>
-                       </div>
-                        <div class="clearfix"> </div>
-                   </div>
-                    <div class="sub-trailer">
-                       <div class="col-md-4 sub-img">
-                            <img src="images/v3.jpg" alt="img07"/>
-                       </div>
-                       <div class="col-md-8 sub-text">
-                                <a href="#">Death Stranding (PS4)</a>
-                             <p>Death Stranding – экшн японской студии Kojima Productions, первая игра директора Хидэо Кодзимы и его компании после выхода Kojima Productions из Konami и превращения в независимую студию. Игру анонсировали на конференции Sony на E3 2016. Главных персонажей изобразят актеры Норман Рид и Мэдс Миккельсен – посредством захвата движения, сканирования лица и голоса. Режиссер Гильермо дель Торо станет прообразом другого персонажа посредством сканирования лица и тела. Название игры происходит от феномена выбрасыванием на мель («stranding») китов. Действие игры происходит в открытом мире. Есть мультиплеерные функции. Полномасштабная разработка игры началась в 2017 году.</p>
-                       </div>
-                        <div class="clearfix"> </div>
-                   </div>
-                </div>
-                <div class="col-md-7 trailer">
-                 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLY0KbDiiFYeMUnqOjbB-iz0pkQIdjNjsb" frameborder="0" gesture="media" allowfullscreen></iframe>
-                 <iframe width="560" height="315" src="https://www.youtube.com/embed/lKgaa8wXr7Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-                 <div class="clearfix"> </div>
+                        <div class="col-md-4 sub-img">
+                            <img src="images/games/<?=$game['img']?>" alt="<?=$game['game']?>"/>
+                        </div>
+                        <div class="col-md-8 sub-text">
+                            <a href="javascript:void(null);"><?=$game['game']?></a>
+                            <p>
+                                <?=$game['info']?>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                <?php } ?>
             </div>
+            <div class="col-md-7 trailer">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLY0KbDiiFYeMUnqOjbB-iz0pkQIdjNjsb" frameborder="0" gesture="media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/lKgaa8wXr7Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
     </div>
 </div>
 <!-- poster -->
