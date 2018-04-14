@@ -15,5 +15,5 @@ if (auth()->login()) {
 } else {
     $_SESSION['error'] = auth()->error();
     $back = $_REQUEST['back'] ?: $_SERVER['HTTP_REFERER'] ?: BASE_URL;
-    header('Location: ' . $back);
+    // header('Location: ' . $back);
 }
