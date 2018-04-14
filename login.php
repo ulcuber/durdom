@@ -7,10 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit();
 }
 
-$loggedIn = auth()->login();
+unset($_SESSION['error']);
 
-if ($loggedIn) {
-    unset($_SESSION['error']);
+if (auth()->login()) {
     header('Location: index.php ');
 } else {
     $_SESSION['error'] = auth()->error();
