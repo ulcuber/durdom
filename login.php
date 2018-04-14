@@ -13,9 +13,11 @@ if (isset($_SESSION['error'])) {
 
 if (auth()->login()) {
     $back = BASE_URL;
-    // header('Location: ' . $back);
+    header('Location: ' . $back);
 } else {
     $_SESSION['error'] = auth()->error();
-    // $back = $_REQUEST['back'] ?? $_SERVER['HTTP_REFERER'] ?? BASE_URL;
-    // header('Location: ' . $back);
+    $back = isset($_REQUEST['back']) ?
+        $_REQUEST['back']
+        : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : BASE_URL;
+    header('Location: ' . $back);
 }
