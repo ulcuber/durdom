@@ -1,9 +1,6 @@
 <?php
 require_once '../../inc/bootstrap.php';
-if (!auth()->admin()) {
-    echo 'Войдите в систему';
-    exit();
-}
+redirectNotAdmin();
 $url = 'admin/news';
 $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
 $news = store('forPage', 'news', $page);

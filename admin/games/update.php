@@ -3,9 +3,7 @@
 namespace App;
 
 require_once '../../inc/bootstrap.php';
-if (!auth()->admin()) {
-    exit();
-}
+redirectNotAdmin();
 if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }

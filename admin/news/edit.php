@@ -1,17 +1,17 @@
 <?php
 require_once '../../inc/bootstrap.php';
-if (!auth()->admin()) {
-    exit();
-}
+redirectNotAdmin();
 
 if (!isset($_REQUEST['id'])) {
     $_SESSION['error'] = 'Не задан id';
+    back();
     exit();
 }
 $id = (int) $_REQUEST['id'];
 $item = store('byId', 'news', $id);
 if (!$item) {
     $_SESSION['error'] = 'Новость не найдена';
+    back();
     exit();
 }
 ?>
@@ -88,6 +88,10 @@ if (!$item) {
             <div class="col-md-3">
                 <input id="img2" type="file" name="img2" value="<?=$item['img2']?>">
             </div>
+            <label class="col-md-3 control-label">Текущая картинка</label>
+            <div class="col-md-3">
+                <img class="img-responsive" src="<?=url('images/news/' . $item['img2'])?>" alt="<?=$item['head']?>">
+            </div>
         </div>
         <div class="form-group">
             <label for="author" class="col-md-3 control-label">Автор</label>
@@ -98,7 +102,7 @@ if (!$item) {
         <div class="form-group">
             <label for="video" class="col-md-3 control-label">Видео</label>
             <div class="col-md-9">
-                <input id="video" type="text" class="form-control" name="video" value="<?=$item['video']?>" required>
+                <input id="video" type="text" class="form-control" name="video" value="<?=$item['video']?>">
             </div>
         </div>
         <div class="btn-group" role="group" aria-label="...">

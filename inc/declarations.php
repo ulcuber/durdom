@@ -92,6 +92,17 @@ function back()
 {
     $back = isset($_REQUEST['back']) ?
         $_REQUEST['back']
-        : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $_ENV['BASE_URL'];
+        : isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : url();
     header('Location: ' . $back);
+}
+
+/**
+ * Переадресует обычных пользователей
+ */
+function redirectNotAdmin()
+{
+    if (!auth()->admin()) {
+        header('Location: ' . url());
+        exit();
+    }
 }

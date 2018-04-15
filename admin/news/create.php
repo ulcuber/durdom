@@ -1,9 +1,6 @@
 <?php
 require_once '../../inc/bootstrap.php';
-if (!auth()->admin()) {
-    echo 'Войдите в систему';
-    exit();
-}
+redirectNotAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="ru">

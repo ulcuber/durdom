@@ -1,17 +1,17 @@
 <?php
 require_once '../../inc/bootstrap.php';
-if (!auth()->admin()) {
+redirectNotAdmin();
+if (!isset($_REQUEST['id'])) {
+    $_SESSION['error'] = 'Не задан id';
+    back();
     exit();
 }
 
-if (!isset($_REQUEST['id'])) {
-    $_SESSION['error'] = 'Не задан id';
-    exit();
-}
 $id = (int) $_REQUEST['id'];
 $game = store('byId', 'games', $id);
 if (!$game) {
     $_SESSION['error'] = 'Игра не найдена';
+    back();
     exit();
 }
 ?>
