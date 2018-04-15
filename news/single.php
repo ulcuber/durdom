@@ -8,9 +8,9 @@ if (!isset($_REQUEST['id'])) {
 $id = (int) $_REQUEST['id'];
 $item = store('newsSingleWithCategories', $id);
 if ($item && isset($item['categories'])) {
-    $categories = implode(', ', array_column($item['categories'], 'name'));
+    // $categories = implode(', ', array_column($item['categories'], 'name'));
 } else {
-    $categories = 'Нет категории';
+    // $categories = 'Нет категории';
 }
 ?>
 <!DOCTYPE HTML>
@@ -56,7 +56,7 @@ if ($item && isset($item['categories'])) {
                     <div class="comment-icons">
                         <ul>
                             <li><span class="admin"></span> <a href="#"><?=$item['author']?></a></li>
-                            <li><span class="cmnts"></span> <a href="#"><?=$categories?></a></li>
+                            <!-- <li><span class="cmnts"></span> <a href="#"><?=$categories?></a></li> -->
 
                             <?php if (auth()->admin()) { ?>
                                 <li><span class="cmnts"></span><a href="<?=url('admin/news/edit.php', ['id' => $item['id']]);?>">Изменить новость</a></li>

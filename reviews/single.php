@@ -8,9 +8,9 @@ if (!isset($_REQUEST['id'])) {
 $id = (int) $_REQUEST['id'];
 $review = store('review', $id);
 if ($review && isset($review['categories'])) {
-    $categories = implode(', ', array_column($review['categories'], 'name'));
+    // $categories = implode(', ', array_column($review['categories'], 'name'));
 } else {
-    $categories = 'Нет категории';
+    // $categories = 'Нет категории';
 }
 ?>
 <!DOCTYPE HTML>
@@ -57,7 +57,7 @@ if ($review && isset($review['categories'])) {
                         <ul>
                             <li><span class="clndr"></span><?=$review['date']?></li>
                             <li><span class="admin"></span> <a href="#"><?=$review['author']?></a></li>
-                            <li><span class="cmnts"></span> <a href="#"><?=$categories?></a></li>
+                            <!-- <li><span class="cmnts"></span> <a href="#"><?=$categories?></a></li> -->
                             <?php if (auth()->admin()) { ?>
                                 <li><span class="cmnts"></span><a href="<?=url('admin/reviews/edit.php', ['id' => $review['id']]);?>">Изменить обзор</a></li>
                             <?php } ?>
