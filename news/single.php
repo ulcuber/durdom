@@ -65,13 +65,13 @@ if ($item && isset($item['categories'])) {
                     </div>
                 </div>
             </div>
-            <?php inc('right_block'); ?>
+            <?php inc('aside_news'); ?>
             <div class="clearfix"> </div>
         </div>
 </div>
 
 <?php inc('footer'); ?>
-<?php inc('right_block_script'); ?>
+<?php inc('aside_script'); ?>
 
 </body>
 </html>
