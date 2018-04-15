@@ -73,7 +73,7 @@ class Api
 
     public function apiCall($method, $params = array())
     {
-        $params['access_token'] = $this->accessToken ?: $_ENV('VK_API_ACCESS_TOKEN');
+        $params['access_token'] = $this->accessToken ?: $_ENV['VK_API_ACCESS_TOKEN'];
         $params['v'] = '5.67';
 
         $query = http_build_query($params);
