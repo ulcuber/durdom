@@ -70,7 +70,7 @@
                 <span class="menu"></span>
                 <ul class="nav1">
                     <li class="<?php
-                    if (preg_match("/" . $_SERVER['HTTP_HOST'] . "\/?\z/", $_SERVER['REQUEST_URI'])) {
+                    if (preg_match("/^\/?\z/", $_SERVER['REQUEST_URI'])) {
                         echo 'active';
                     } ?>"><a href="<?=url()?>">Главная</a></li>
                     <!--<li><a href="<?=url('about.php')?>">О нас</a></li>-->
