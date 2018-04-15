@@ -69,11 +69,23 @@
             <div class="top-menu">
                 <span class="menu"></span>
                 <ul class="nav1">
-                    <li class="active"><a href="index.php">Главная</a></li>
+                    <li class="<?php
+                    if (preg_match("/" . $_SERVER['HOST'] . "?\/\z/", $_SERVER['REQUEST_URI'])) {
+                        echo 'active';
+                    } ?>"><a href="<?=url()?>">Главная</a></li>
                     <!--<li><a href="<?=url('about.php')?>">О нас</a></li>-->
-                    <li><a href="<?=url('reviews')?>">Обзоры</a></li>
-                    <li><a href="<?=url('news')?>">Новости</a></li>
-                    <li><a href="<?=url('gallery.php')?>">Галерея</a></li>
+                    <li class="<?php
+                    if (preg_match("/\/reviews/", $_SERVER['REQUEST_URI'])) {
+                        echo 'active';
+                    } ?>"><a href="<?=url('reviews')?>">Обзоры</a></li>
+                    <li class="<?php
+                    if (preg_match("/\/news/", $_SERVER['REQUEST_URI'])) {
+                        echo 'active';
+                    } ?>"><a href="<?=url('news')?>">Новости</a></li>
+                    <li class="<?php
+                    if (preg_match("/\/gallery/", $_SERVER['REQUEST_URI'])) {
+                        echo 'active';
+                    } ?>"><a href="<?=url('gallery.php')?>">Галерея</a></li>
                     <?php
                     $admin = auth()->admin();
                     if ($admin) {
