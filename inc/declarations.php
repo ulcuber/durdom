@@ -5,7 +5,10 @@
  * Файл содержит константы, функции
  */
 
+define('USER', 0);
 define('ADMIN', 1);
+define('MODERATOR', 2);
+
 define('ROOT_DIR', dirname(__DIR__));
 define('ADMIN_DIR', ROOT_DIR . DIRECTORY_SEPARATOR . 'admin');
 
@@ -104,5 +107,22 @@ function redirectNotAdmin()
     if (!auth()->admin()) {
         header('Location: ' . url());
         exit();
+    }
+}
+
+/**
+ * Возвращает название статуса пользователя
+ * @var int
+ * @return string
+ */
+function get_user_status_name($status)
+{
+    switch ($status) {
+        case USER:
+            return 'Пользователь';
+        case ADMIN:
+            return 'Админ';
+        case MODERATOR:
+            return 'Модератор';
     }
 }

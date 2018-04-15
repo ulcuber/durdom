@@ -40,6 +40,13 @@
                     echo 'active';
                 } ?>"><a href="<?=url('admin/reviews')?>">Обзоры</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                &nbsp;
+                <li class="<?php
+                if (preg_match("/admin\/users/", $_SERVER['REQUEST_URI'])) {
+                    echo 'active';
+                } ?>"><a href="<?=url('admin/users')?>">Пользователи</a></li>
+            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
