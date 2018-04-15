@@ -77,8 +77,8 @@
                     <?php
                     $admin = auth()->admin();
                     if ($admin) {
-                        echo '<li><a href="'. url('createNews.php').'">Добавить новость</a></li>';
-                        echo '<li><a href="'. url('createReview.php'). '">Добавить обзор</a></li>';
+                        echo '<li><a href="'. url('admin/news/create.php').'">Добавить новость</a></li>';
+                        echo '<li><a href="'. url('admin/reviews/create.php'). '">Добавить обзор</a></li>';
                     }
                     ?>
                 </ul>

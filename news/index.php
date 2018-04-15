@@ -43,7 +43,7 @@ if (isset($_REQUEST['search'])) {
                     <div class=" col-1">
                         <a href="<?=$url?>"><img class="img-responsive" src="<?=url('images/news/' . $row['imghead'])?>" alt="<?=$row['head']?>"></a>
                          <h4><a href="<?=$url?>"><?=$row['head']?></a></h4>
-                        <p><?=mb_substr($row['head'], 0, 40)?></p>
+                        <p><?=mb_substr($row['head'], 0, 42)?></p>
                     </div>
                 </div>
             <?php } ?>
