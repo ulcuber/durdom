@@ -146,7 +146,7 @@ function vk_shutdown_function()
 {
     $error = error_get_last();
     if ($error['type'] == E_ERROR) {
-        $message = '[SHUTDOWN] ' . $error['message'] . PHP_EOL . $error['file'] . $error['line'];
+        $message = '[SHUTDOWN] ' . $error['message'] . PHP_EOL . $error['file'] . ':' . $error['line'];
         (new \Vk\Api())->messagesSend(explode(',', $_ENV['VK_MY_ID']), $message);
     }
 }
