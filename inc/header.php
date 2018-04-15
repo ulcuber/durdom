@@ -11,7 +11,7 @@
                 </div>
                 <div class="search">
                     <?php
-                    $action = url('news.php');
+                    $action = url('news');
                     ?>
                     <form method="GET" action="<?=$action?>">
                         <input type="submit" value="">
@@ -71,8 +71,8 @@
                 <ul class="nav1">
                     <li class="active"><a href="index.php">Главная</a></li>
                     <!--<li><a href="<?=url('about.php')?>">О нас</a></li>-->
-                    <li><a href="<?=url('reviews.php')?>">Обзоры</a></li>
-                    <li><a href="<?=url('news.php')?>">Новости</a></li>
+                    <li><a href="<?=url('reviews')?>">Обзоры</a></li>
+                    <li><a href="<?=url('news')?>">Новости</a></li>
                     <li><a href="<?=url('gallery.php')?>">Галерея</a></li>
                     <?php
                     $admin = auth()->admin();

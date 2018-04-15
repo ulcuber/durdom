@@ -1,10 +1,10 @@
 <?php
 require_once '../../inc/bootstrap.php';
 redirectNotAdmin();
-$url = 'admin/news';
+$url = 'admin/reviews';
 $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
-$news = store('forPage', 'news', $page);
-$hasNextPage = store()->hasPage('news', $page + 1);
+$reviews = store('forPage', 'reviews', $page);
+$hasNextPage = store()->hasPage('reviews', $page + 1);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -38,7 +38,7 @@ $hasNextPage = store()->hasPage('news', $page + 1);
                         <div class="panel-heading">Новости
                             <a
                                 class="btn btn-xs btn-success pull-right"
-                                href="<?=url('admin/news/create.php')?>">
+                                href="<?=url('admin/reviews/create.php')?>">
                                 Создать
                             </a>
                         </div>
@@ -53,18 +53,18 @@ $hasNextPage = store()->hasPage('news', $page + 1);
     </thead>
 
     <tbody>
-        <?php foreach ($news as $row) { ?>
+        <?php foreach ($reviews as $row) { ?>
             <tr>
                 <td><?=$row['id']?></td>
                 <td><?=$row['head']?></td>
                 <td class="text-right">
                     <a
                         class="btn btn-xs btn-info"
-                        href="<?=url('admin/news/edit.php', ['id' => $row['id']])?>">
+                        href="<?=url('admin/reviews/edit.php', ['id' => $row['id']])?>">
                         Редактировать
                     </a>
 
-                    <form action="<?=url('admin/news/delete.php', ['id' => $row['id']])?>"
+                    <form action="<?=url('admin/reviews/delete.php', ['id' => $row['id']])?>"
                         method="POST"
                         style="display: inline;"
                         onsubmit="if(confirm('Удалить? Вы уверены?')) {return true;} else {return false;};">

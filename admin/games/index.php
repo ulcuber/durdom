@@ -80,7 +80,7 @@ $hasNextPage = store()->hasPage('games', $page + 1);
 </table>
 
                     </div>
-                    <?php include ADMIN_DIR . '/inc/paginator.php'; ?>
+                    <?php include ROOT_DIR . '/inc/paginator.php'; ?>
                 </div>
             </div>
         </div>

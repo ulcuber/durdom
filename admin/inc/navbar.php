@@ -27,6 +27,10 @@
                 &nbsp;
                 <li><a href="<?=url('admin/news')?>">Новости</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                &nbsp;
+                <li><a href="<?=url('admin/reviews')?>">Обзоры</a></li>
+            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

@@ -48,6 +48,16 @@ class Store
     }
 
     /**
+     * Возвращает страницу новостей с категориями
+     * @return \Traversable
+     */
+    public function getNewsWithCategoriesForPage($page)
+    {
+        $news = $this->getForPage('news', $page);
+        return $this->makeNewsWithCategories($news);
+    }
+
+    /**
      * Возвращает найденные новости с категориями
      * @return \Traversable
      */
@@ -120,11 +130,6 @@ class Store
     public function getReview($id)
     {
         return $this->getById('reviews', $id);
-    }
-
-    public function getNews2($id)
-    {
-        return $this->getById('news', $id);
     }
 
     /**

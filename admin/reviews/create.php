@@ -24,11 +24,11 @@ redirectNotAdmin();
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default table-responsive">
-                        <div class="panel-heading">Создать новость</div>
+                        <div class="panel-heading">Создать обзор</div>
 
 <form class="form-horizontal"
     method="POST"
-    action="<?=url('admin/news/save.php')?>"
+    action="<?=url('admin/reviews/save.php')?>"
     enctype="multipart/form-data">
     <div class="panel-body">
         <div class="form-group">

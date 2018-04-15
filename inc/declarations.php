@@ -82,7 +82,7 @@ function auth($method = null)
  */
 function inc($inc)
 {
-    require_once 'inc/' . $inc. '.php';
+    include ROOT_DIR . '/inc/' . $inc. '.php';
 }
 
 /**

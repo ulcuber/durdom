@@ -5,7 +5,7 @@
              <div class="ftr-info">
                  <h3>О нас</h3>
                  <p>Нам интересна geek-культура, в том числе: игры, наука, кино, комиксы, искусство и повседневная жизнь. Мы пишем об этом ежедневно.</p>
-                
+
              </div>
              <div class="col-md-3 ftr-grid">
                  <!--<h3>Категории</h3>
@@ -24,7 +24,7 @@
                      <li><a href="#">Ps4</a></li>
                      <li><a href="#">Nintendo</a></li>
                      <li><a href="#">XBOX ONE</a></li>
-                  
+
                  </ul>
              </div>
              <div class="col-md-3 ftr-grid">
@@ -47,8 +47,8 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="<?=url('js/jquery.min.js')?>"></script>
+<script src="<?=url('js/bootstrap.js')?>"></script>
 <!-- script-for-menu -->
 <script>
     $( "span.menu" ).click(function() {

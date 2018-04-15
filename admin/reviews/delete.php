@@ -16,16 +16,16 @@ if (!isset($_REQUEST['id'])) {
 }
 
 $id = (int) $_REQUEST['id'];
-$item = store('byId', 'news', $id);
-if (!$item) {
-    $_SESSION['error'] = 'Новость не найдена';
+$review = store('byId', 'reviews', $id);
+if (!$review) {
+    $_SESSION['error'] = 'Обзор не найден';
     exit();
 }
 
-$result = store()->deleteById('news', $id);
+$result = store()->deleteById('reviews', $id);
 
 if (!$result) {
     $_SESSION['error'] = mysqli_error(Db::instance());
 } else {
-    (new Image())->path('images/news')->delete($item['img']);
+    (new Image())->path('images/reviews')->delete($review['img']);
 }
