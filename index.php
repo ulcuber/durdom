@@ -80,7 +80,7 @@ $news = store('lastNews', 1);
 <!-- poster -->
 <?php
 foreach ($news as $row) {
-      $url = url('single.php', ['id' => $row['id']]);
+    $url = url('news/single.php', ['id' => $row['id']]);
 ?>
 <div class="poster">
      <div class="container">
@@ -94,8 +94,7 @@ foreach ($news as $row) {
 <?php } ?>
 <!-- post 2 -->
 <?php
-
-    $url = url('review.php', ['id' => $review['id']]);
+    $url = url('reviews/single.php', ['id' => $review['id']]);
 ?>
 <div class="x-box">
      <div class="container">

@@ -3,7 +3,7 @@
     <br>
     <?php
     foreach (store('lastN', 'reviews', 3) as $row) {
-        $url = url('review/single.php', ['id' => $row['id']]);
+        $url = url('reviews/single.php', ['id' => $row['id']]);
     ?>
         <div class="kill-me">
             <h4><a href="<?=$url?>"><?=$row['head']?></a></h4>
