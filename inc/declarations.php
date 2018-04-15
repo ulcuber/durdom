@@ -126,3 +126,27 @@ function get_user_status_name($status)
             return 'Модератор';
     }
 }
+
+/**
+ * Пользовательский обработчик ошибок
+ * Посылает описание ошибки через VkApi
+ */
+function vk_error_handler($errno, $errstr, $errfile, $errline)
+{
+    $message = '[ERROR] ' .  $errstr . PHP_EOL . $errfile . ':' .$errline;
+    (new \Vk\Api())->messagesSend($_ENV['VK_MY_ID'], $message);
+    return true;
+}
+
+/**
+ * Функция аварийного завершения скрипта
+ * Посылает описание ошибки через VkApi
+ */
+function vk_shutdown_function()
+{
+    $error = error_get_last();
+    if ($error['type'] == E_ERROR) {
+        $message = '[SHUTDOWN] ' . $error['message'] . PHP_EOL . $error['file'] . $error['line'];
+        (new \Vk\Api())->messagesSend($_ENV['VK_MY_ID'], $message);
+    }
+}
